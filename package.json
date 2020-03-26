@@ -1,0 +1,19 @@
+{
+  "name": "realtime-multi-user-cursor",
+  "version": "1.0.0",
+  "description": "Displaying cursor on every connected client",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "author": "Ping Lu",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
