@@ -3,6 +3,7 @@
   --dark-color-b: #7386ff;
   --middle-color: #bac0f0;
   --light-color: #e6e9ff;
+  --drop-shadow: rgba(0, 0, 0, 0.3);
 }
 
 * {
@@ -34,21 +35,55 @@ body {
 }
 
 /* Cursor page */
-.cursor-header {
-  display: flex;
-  align-items: center;
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: auto;
-  background-color: transparent;
-  z-index: 500;
-}
-
-.cursor-main {
-  background-color: #fff;
+.cursor-container {
   width: 100vw;
   height: 100vh;
+  background-color: #fff;
+}
+
+.users {
+  display: flex;
+  position: fixed;
+  top: 28px;
+  right: 132px;
+  list-style: none;
+}
+
+.user-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin: 0 4px;
+  color: white;
+  border-radius: 50%;
+}
+
+.cursor-container .btn {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+}
+
+.cursor {
+  display: flex;
+  align-items: flex-start;
+  position: absolute;
+}
+
+.cursor .cursor-icon {
+  width: 32px;
+  -webkit-filter: drop-shadow(1px 2px 1px var(--drop-shadow));
+  filter: drop-shadow(1px 2px 1px var(--drop-shadow));
+}
+
+.cursor .username {
+  text-align: center;
+  width: fit-content;
+  padding: 2px 4px;
+  color: white;
+  font-size: 14px;
 }
 
 /* Join page */
