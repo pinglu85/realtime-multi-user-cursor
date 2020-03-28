@@ -3,6 +3,7 @@
   --dark-color-b: #7386ff;
   --middle-color: #bac0f0;
   --light-color: #e6e9ff;
+  --light-grey: #eff2f3;
   --drop-shadow: rgba(0, 0, 0, 0.3);
 }
 
@@ -35,18 +36,23 @@ body {
 }
 
 /* Cursor page */
-.cursor-container {
-  width: 100vw;
-  height: 100vh;
-  background-color: #fff;
+.cursor-header {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  z-index: 999;
+  background-color: transparent;
 }
 
 .users {
   display: flex;
-  position: fixed;
-  top: 28px;
-  right: 132px;
   list-style: none;
+  padding: 4px;
+  margin: 4px 24px 0 0;
+  border-radius: 8px;
+  background-color: #fff;
 }
 
 .user-icon {
@@ -60,10 +66,13 @@ body {
   border-radius: 50%;
 }
 
-.cursor-container .btn {
-  position: fixed;
-  top: 24px;
-  right: 24px;
+.cursor-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--light-grey);
 }
 
 .cursor {
