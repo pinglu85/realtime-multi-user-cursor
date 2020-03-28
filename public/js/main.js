@@ -1,8 +1,19 @@
 const displayCursorContainer = document.querySelector('.cursor-container');
-let otherUsersConnected = false;
 let div;
 
+const { username } = Qs.parse(location.search, {
+  ignoreQueryPrefix: true
+});
+
 const socket = io();
+
+// User joins
+socket.emit('join', { username });
+
+// Get users
+socket.on('joinedUser', username => {
+  displayCursor(username);
+});
 
 // Listen for mouse position
 displayCursorContainer.addEventListener('pointermove', e => {
@@ -15,21 +26,8 @@ displayCursorContainer.addEventListener('pointermove', e => {
   socket.emit('mousePos', mousePos);
 });
 
-// Mouse position from server
-socket.on('mousePos', pos => {
-  console.log(pos);
-  if (!otherUsersConnected) {
-    displayCursor();
-    otherUsersConnected = true;
-  }
-  if (div) {
-    div.style.left = `${pos.x + 16}px`;
-    div.style.top = `${pos.y + 16}px`;
-  }
-});
-
 // Display cursor
-function displayCursor(pos) {
+function displayCursor(username) {
   const [r, g, b] = [
     Math.floor(Math.random() * 255),
     Math.floor(Math.random() * 255),
@@ -66,8 +64,16 @@ function displayCursor(pos) {
             d="M18.9 21v-3.5M16.8 21v-3.5M14.8 17.6l.1 3.4"
           />
         </svg>
-        <div class="username">Nathan</div>`;
-  div.children[0].style.stroke = `rgba(${r}, ${g}, ${b}, 0.7)`;
+        <div class="username">${username}</div>`;
+  div.children[0].style.stroke = `rgba(${r}, ${g}, ${b})`;
   div.children[1].style.background = `rgba(${r}, ${g}, ${b}, 0.7)`;
   displayCursorContainer.appendChild(div);
+}
+
+function updateCursorPos(pos) {
+  console.log(div);
+  if (div) {
+    div.style.left = `${pos.x + 16}px`;
+    div.style.top = `${pos.y + 16}px`;
+  }
 }
