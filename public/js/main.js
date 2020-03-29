@@ -43,10 +43,9 @@ socket.on('mousePos', ({ mousePos, id }) => {
 
 // User leave
 socket.on('userLeave', ({ username, id }) => {
-  console.log(id);
   document.getElementById(id).remove();
   document.getElementById(username).remove();
-  if (userList.children) {
+  if (!userList.children) {
     userList.style.display = 'none';
   }
 });
