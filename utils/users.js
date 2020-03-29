@@ -8,9 +8,9 @@ function userJoin(username, id) {
   return user;
 }
 
-// Get current user
-function getCurrentUser(id) {
-  return users.find(id => user.id === id);
+// Get users except sender
+function getUsers(id) {
+  return users.filter(user => user.id !== id);
 }
 
 // User leaves
@@ -24,6 +24,6 @@ function userLeave(id) {
 
 module.exports = {
   userJoin,
-  getCurrentUser,
+  getUsers,
   userLeave
 };
