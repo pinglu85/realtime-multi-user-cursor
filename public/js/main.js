@@ -13,8 +13,8 @@ socket.emit('join', { username });
 // Listen for mouse position
 displayCursorContainer.addEventListener('pointermove', e => {
   const mousePos = {
-    x: e.pageX,
-    y: e.pageY
+    x: e.pageX / window.innerWidth,
+    y: e.pageY / window.innerHeight
   };
 
   // Emit mouse position to server
@@ -73,8 +73,8 @@ function displayCursor(username, id) {
 function updateCursorPos(pos, id) {
   const div = document.getElementById(id);
   if (div) {
-    div.style.left = `${pos.x + 16}px`;
-    div.style.top = `${pos.y + 16}px`;
+    div.style.left = `${pos.x * window.innerWidth}px`;
+    div.style.top = `${pos.y * window.innerHeight}px`;
   }
 }
 
