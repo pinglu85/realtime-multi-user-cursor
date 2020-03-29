@@ -47,7 +47,7 @@ body {
 }
 
 .users {
-  display: flex;
+  display: none;
   list-style: none;
   padding: 4px;
   margin: 4px 24px 0 0;
@@ -77,12 +77,14 @@ body {
 
 .cursor {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: flex-start;
   position: absolute;
 }
 
 .cursor .cursor-icon {
-  width: 32px;
+  width: 14px;
+  height: 16px;
   -webkit-filter: drop-shadow(1px 2px 1px var(--drop-shadow));
   filter: drop-shadow(1px 2px 1px var(--drop-shadow));
 }
@@ -90,6 +92,7 @@ body {
 .cursor .username {
   text-align: center;
   width: fit-content;
+  margin-top: 6px;
   padding: 2px 4px;
   color: white;
   font-size: 14px;
